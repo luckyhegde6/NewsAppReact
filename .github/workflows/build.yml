@@ -32,7 +32,7 @@ jobs:
       run: npx playwright install --with-deps
       
     - name: Run e2e tests
-      run: npm run test:e2e -- --output-dir=test-results/playwright-report
+      run: npm run test:e2e
 
     - name: Build
       run: npm run build
