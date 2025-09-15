@@ -6,41 +6,44 @@ export class Navbar extends Component {
 
   render() {
     return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="/">
-              News React App
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/topStories">
+      <div className="w-full">
+        <nav className="bg-white shadow-lg">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="flex justify-between items-center h-16">
+              <a className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-700" href="/">
+                News React App
+              </a>
+              <div className="hidden md:block">
+                <div className="flex items-baseline space-x-4">
+                  <a 
+                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-gray-700 hover:bg-gray-50"
+                    href="/topStories"
+                  >
                     Top Stories
                   </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/Market">
-                    Market
+                  <a 
+                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-gray-700 hover:bg-gray-50"
+                    href="/prev"
+                  >
+                    Prev
                   </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/weather">
-                    Weather
+                  <a 
+                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:text-gray-700 hover:bg-gray-50"
+                    href="/next"
+                  >
+                    Next
                   </a>
-                </li>
-              </ul>
+                </div>
+              </div>
+              
+              {/* Mobile menu button */}
+              <div className="md:hidden">
+                <button className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </nav>

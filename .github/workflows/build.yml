@@ -1,0 +1,38 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install Dependencies
+      run: npm ci
+      
+    - name: Create env file
+      run: |
+        echo "VITE_NEWS_APIKEY=${{ secrets.NEWS_API_KEY }}" > .env
+        echo "VITE_COUNTRY_CODE=${{ secrets.COUNTRY_CODE }}" >> .env
+        echo "VITE_TITLE=${{ secrets.APP_TITLE }}" >> .env
+        echo "VITE_DEBUG=${{ secrets.DEBUG_MODE }}" >> .env
+      
+    - name: Build
+      run: npm run build
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: dist/

@@ -8,14 +8,19 @@ export class NewsItem extends Component {
       imageURL,
       sourceURL }= this.props;
     return (
-      <div className="container">
-        <div className="card" style={{ width: "20rem" }}>
-          <img src={imageURL} className="card-img-top" alt={title} />
-          <div className="card-body">
-            <h5 className="card-title">{title} ...</h5>
-            <p className="card-text">{description} ...</p>
-            <a href={sourceURL} className="btn btn-sm btn-primary">
-              Read more...
+      <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white m-4">
+        <img className="w-full h-48 object-cover" src={imageURL} alt={title} />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2 line-clamp-2">{title}</div>
+          <p className="text-gray-700 text-base line-clamp-3">{description}</p>
+          <div className="mt-4">
+            <a 
+              href={sourceURL} 
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read more
             </a>
           </div>
         </div>

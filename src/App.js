@@ -7,11 +7,11 @@ import NewsMain from "./Components/NewsMain";
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className="min-h-screen bg-gray-50">
         <Navbar />
-        <div className="container">
+        <main className="container mx-auto px-4 py-8">
           <NewsMain />
-        </div>
+        </main>
       </div>
     );
   }
