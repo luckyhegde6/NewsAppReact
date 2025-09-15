@@ -28,11 +28,24 @@ jobs:
         echo "VITE_TITLE=${{ secrets.APP_TITLE }}" >> .env
         echo "VITE_DEBUG=${{ secrets.DEBUG_MODE }}" >> .env
       
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+      
+    - name: Run e2e tests
+      run: npm run test:e2e -- --output-dir=test-results/playwright-report
+
     - name: Build
       run: npm run build
-      
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-report
+        path: test-results/playwright-report/
+
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dist
         path: dist/

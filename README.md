@@ -69,6 +69,45 @@ The following environment variables are required:
 
 ⚠️ **Important**: Never commit the `.env` file to version control. The API key should be stored as a GitHub secret.
 
+## End-to-End (E2E) and Automation Testing
+
+This project uses [Playwright](https://playwright.dev/) for end-to-end (E2E) and automation testing.
+
+### Running E2E Tests Locally
+
+1. Install dependencies (if not already done):
+   ```sh
+   npm install
+   ```
+2. Install Playwright browsers:
+   ```sh
+   npx playwright install
+   ```
+3. Run all E2E tests:
+   ```sh
+   npm run test:e2e
+   ```
+4. Run E2E tests in UI mode (for debugging):
+   ```sh
+   npm run test:e2e:ui
+   ```
+5. Run E2E tests in debug mode:
+   ```sh
+   npm run test:e2e:debug
+   ```
+6. View the Playwright HTML report:
+   ```sh
+   npm run test:e2e:report
+   ```
+
+### Automation in CI/CD
+
+- E2E tests are automatically run in GitHub Actions on every push and pull request to the `main` branch.
+- Test results and build artifacts are uploaded as workflow artifacts for review.
+- Secrets for API keys are managed using GitHub Secrets and injected at build time.
+
+For more details, see the `.github/workflows/build.yml` file.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
